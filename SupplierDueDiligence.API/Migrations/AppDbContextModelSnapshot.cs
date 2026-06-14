@@ -1587,8 +1587,8 @@ namespace SupplierDueDiligence.API.Migrations
 
                     b.Property<string>("TaxId")
                         .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("character varying(11)")
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)")
                         .HasColumnName("tax_id");
 
                     b.Property<string>("Website")
@@ -1652,6 +1652,216 @@ namespace SupplierDueDiligence.API.Migrations
                             PhoneNumber = "+5076543210",
                             TaxId = "11122334455",
                             Website = "https://offshore.pa"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "Sveavägen 44, Stockholm",
+                            AnnualRevenue = 1250000.50m,
+                            BusinessName = "EDCON KB",
+                            CommercialName = "EDCON KB",
+                            CountryId = 8,
+                            Email = "contact@edconkb.se",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+46 8 412 9981",
+                            TaxId = "TAX-SE-482910",
+                            Website = "https://edconkb.se"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "Kungsgatan 12, Stockholm",
+                            AnnualRevenue = 980000.00m,
+                            BusinessName = "SWEDISH URBAN PLANNER & MANAGEMENT",
+                            CommercialName = "SUPM",
+                            CountryId = 8,
+                            Email = "info@supm.se",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+46 70 552 1189",
+                            TaxId = "TAX-SE-771204",
+                            Website = "https://supm-group.se"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Address = "Road Town, Tortola",
+                            AnnualRevenue = 5600000.00m,
+                            BusinessName = "DARESLEY HOLDING INC.",
+                            CommercialName = "DARESLEY",
+                            CountryId = 5,
+                            Email = "admin@daresleyholdings.vg",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+1 284 555 0192",
+                            TaxId = "TAX-BVI-993120",
+                            Website = "https://daresleyholdings.vg"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Address = "Dublin 2, Ireland",
+                            AnnualRevenue = 3200000.00m,
+                            BusinessName = "HARLTON INVESTMENTS INC.",
+                            CommercialName = "HARLTON",
+                            CountryId = 6,
+                            Email = "contact@harlton.ie",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+353 1 902 4411",
+                            TaxId = "TAX-IE-550871",
+                            Website = "https://harltoninvest.ie"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Address = "12 Baker Street, London",
+                            AnnualRevenue = 7400000.00m,
+                            BusinessName = "OVERSEAS PROJECT SERVICES LTD.",
+                            CommercialName = "OPS LTD",
+                            CountryId = 3,
+                            Email = "ops@overseasprojects.co.uk",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+44 20 7946 8821",
+                            TaxId = "TAX-UK-110992",
+                            Website = "https://ops-global.co.uk"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Address = "Toronto, Ontario",
+                            AnnualRevenue = 2100000.00m,
+                            BusinessName = "AGRIC-CANADA",
+                            CommercialName = "AGRIC CANADA",
+                            CountryId = 9,
+                            Email = "support@agriccanada.ca",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+1 416 555 7712",
+                            TaxId = "TAX-CA-440193",
+                            Website = "https://agriccanada.ca"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Address = "Douglas, Isle of Man",
+                            AnnualRevenue = 430000.00m,
+                            BusinessName = "WEST END ASSOCIATES LTD.",
+                            CommercialName = "WEST END",
+                            CountryId = 3,
+                            Email = "info@westendassociates.im",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+44 1624 667 881",
+                            TaxId = "TAX-IM-908172",
+                            Website = "https://westendassociates.im"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Address = "Sheikh Zayed Road, Dubai",
+                            AnnualRevenue = 9800000.00m,
+                            BusinessName = "INTER EMIRATES & CO.",
+                            CommercialName = "INTER EMIRATES",
+                            CountryId = 10,
+                            Email = "contact@interemirates.ae",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+971 4 338 2210",
+                            TaxId = "TAX-AE-772910",
+                            Website = "https://interemirates.ae"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Address = "Victoria Island, Lagos",
+                            AnnualRevenue = 1250000.00m,
+                            BusinessName = "KARITEX LIMITED",
+                            CommercialName = "KARITEX",
+                            CountryId = 11,
+                            Email = "info@karitex.ng",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+234 1 277 8831",
+                            TaxId = "TAX-NG-660211",
+                            Website = "https://karitex.ng"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Address = "Newark, New Jersey, USA",
+                            AnnualRevenue = 6700000.00m,
+                            BusinessName = "COLDLINE INCORPORATED",
+                            CommercialName = "COLDLINE",
+                            CountryId = 1,
+                            Email = "support@coldlineinc.com",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+1 201 555 0198",
+                            TaxId = "TAX-US-301884",
+                            Website = "https://coldlineinc.com"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Address = "Canary Wharf, London",
+                            AnnualRevenue = 3100000.00m,
+                            BusinessName = "INFOTEK & CO.",
+                            CommercialName = "INFOTEK",
+                            CountryId = 3,
+                            Email = "hello@infotekco.uk",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+44 20 3865 1192",
+                            TaxId = "TAX-UK-552901",
+                            Website = "https://infotekco.uk"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Address = "Holborn, London",
+                            AnnualRevenue = 8900000.00m,
+                            BusinessName = "ENGINEERING PROJECTS INTERNATIONAL",
+                            CommercialName = "EPI",
+                            CountryId = 3,
+                            Email = "projects@epi-global.co.uk",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+44 20 7123 9088",
+                            TaxId = "TAX-UK-774401",
+                            Website = "https://epi-global.co.uk"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Address = "Soho, London",
+                            AnnualRevenue = 2400000.00m,
+                            BusinessName = "TIMES INTERNATIONAL & CO.",
+                            CommercialName = "TIMES INTL",
+                            CountryId = 3,
+                            Email = "info@timesintl.co.uk",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+44 20 7946 5522",
+                            TaxId = "TAX-UK-119233",
+                            Website = "https://timesintl.co.uk"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Address = "Douglas, Isle of Man",
+                            AnnualRevenue = 780000.00m,
+                            BusinessName = "UNITED BASEL LTD.",
+                            CommercialName = "UNITED BASEL",
+                            CountryId = 3,
+                            Email = "contact@unitedbasel.im",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+44 1624 555 901",
+                            TaxId = "TAX-IM-445900",
+                            Website = "https://unitedbasel.im"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Address = "Minato Mirai, Yokohama",
+                            AnnualRevenue = 15300000.00m,
+                            BusinessName = "PENMACS CORPORATION",
+                            CommercialName = "PENMACS",
+                            CountryId = 12,
+                            Email = "info@penmacs.co.jp",
+                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "+81 45 312 8890",
+                            TaxId = "TAX-JP-7788991",
+                            Website = "https://penmacs.co.jp"
                         });
                 });
 

@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace SupplierDueDiligence.API.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial_Postgres : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -66,7 +66,7 @@ namespace SupplierDueDiligence.API.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     business_name = table.Column<string>(type: "text", nullable: false),
                     commercial_name = table.Column<string>(type: "text", nullable: true),
-                    tax_id = table.Column<string>(type: "character varying(11)", maxLength: 11, nullable: false),
+                    tax_id = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
                     phone_number = table.Column<string>(type: "text", nullable: true),
                     email = table.Column<string>(type: "text", nullable: true),
                     website = table.Column<string>(type: "text", nullable: true),
@@ -359,7 +359,22 @@ namespace SupplierDueDiligence.API.Migrations
                 {
                     { 1, "Av. Reforma 123", 500000.00m, "Tech Solutions SA", "TechSol", 2, "contact@techsol.com", "+525512345678", "12345678901", "https://techsol.com" },
                     { 2, "Calle Mayor 45", 750000.00m, "Global Logistics", "LogGlobal", 3, "info@logglobal.es", "+34987654321", "98765432109", "https://logglobal.es" },
-                    { 3, "Calle 50, Panama", 2000000.00m, "Offshore Investments", "Offshore Corp", 5, "admin@offshore.pa", "+5076543210", "11122334455", "https://offshore.pa" }
+                    { 3, "Calle 50, Panama", 2000000.00m, "Offshore Investments", "Offshore Corp", 5, "admin@offshore.pa", "+5076543210", "11122334455", "https://offshore.pa" },
+                    { 4, "Sveavägen 44, Stockholm", 1250000.50m, "EDCON KB", "EDCON KB", 8, "contact@edconkb.se", "+46 8 412 9981", "TAX-SE-482910", "https://edconkb.se" },
+                    { 5, "Kungsgatan 12, Stockholm", 980000.00m, "SWEDISH URBAN PLANNER & MANAGEMENT", "SUPM", 8, "info@supm.se", "+46 70 552 1189", "TAX-SE-771204", "https://supm-group.se" },
+                    { 6, "Road Town, Tortola", 5600000.00m, "DARESLEY HOLDING INC.", "DARESLEY", 5, "admin@daresleyholdings.vg", "+1 284 555 0192", "TAX-BVI-993120", "https://daresleyholdings.vg" },
+                    { 7, "Dublin 2, Ireland", 3200000.00m, "HARLTON INVESTMENTS INC.", "HARLTON", 6, "contact@harlton.ie", "+353 1 902 4411", "TAX-IE-550871", "https://harltoninvest.ie" },
+                    { 8, "12 Baker Street, London", 7400000.00m, "OVERSEAS PROJECT SERVICES LTD.", "OPS LTD", 3, "ops@overseasprojects.co.uk", "+44 20 7946 8821", "TAX-UK-110992", "https://ops-global.co.uk" },
+                    { 9, "Toronto, Ontario", 2100000.00m, "AGRIC-CANADA", "AGRIC CANADA", 9, "support@agriccanada.ca", "+1 416 555 7712", "TAX-CA-440193", "https://agriccanada.ca" },
+                    { 10, "Douglas, Isle of Man", 430000.00m, "WEST END ASSOCIATES LTD.", "WEST END", 3, "info@westendassociates.im", "+44 1624 667 881", "TAX-IM-908172", "https://westendassociates.im" },
+                    { 11, "Sheikh Zayed Road, Dubai", 9800000.00m, "INTER EMIRATES & CO.", "INTER EMIRATES", 10, "contact@interemirates.ae", "+971 4 338 2210", "TAX-AE-772910", "https://interemirates.ae" },
+                    { 12, "Victoria Island, Lagos", 1250000.00m, "KARITEX LIMITED", "KARITEX", 11, "info@karitex.ng", "+234 1 277 8831", "TAX-NG-660211", "https://karitex.ng" },
+                    { 13, "Newark, New Jersey, USA", 6700000.00m, "COLDLINE INCORPORATED", "COLDLINE", 1, "support@coldlineinc.com", "+1 201 555 0198", "TAX-US-301884", "https://coldlineinc.com" },
+                    { 14, "Canary Wharf, London", 3100000.00m, "INFOTEK & CO.", "INFOTEK", 3, "hello@infotekco.uk", "+44 20 3865 1192", "TAX-UK-552901", "https://infotekco.uk" },
+                    { 15, "Holborn, London", 8900000.00m, "ENGINEERING PROJECTS INTERNATIONAL", "EPI", 3, "projects@epi-global.co.uk", "+44 20 7123 9088", "TAX-UK-774401", "https://epi-global.co.uk" },
+                    { 16, "Soho, London", 2400000.00m, "TIMES INTERNATIONAL & CO.", "TIMES INTL", 3, "info@timesintl.co.uk", "+44 20 7946 5522", "TAX-UK-119233", "https://timesintl.co.uk" },
+                    { 17, "Douglas, Isle of Man", 780000.00m, "UNITED BASEL LTD.", "UNITED BASEL", 3, "contact@unitedbasel.im", "+44 1624 555 901", "TAX-IM-445900", "https://unitedbasel.im" },
+                    { 18, "Minato Mirai, Yokohama", 15300000.00m, "PENMACS CORPORATION", "PENMACS", 12, "info@penmacs.co.jp", "+81 45 312 8890", "TAX-JP-7788991", "https://penmacs.co.jp" }
                 });
 
             migrationBuilder.CreateIndex(

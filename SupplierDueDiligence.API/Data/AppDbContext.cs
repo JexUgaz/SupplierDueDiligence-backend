@@ -42,7 +42,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
         modelBuilder.Entity<Supplier>()
             .Property(s => s.TaxId)
-            .HasMaxLength(11);
+            .HasMaxLength(30);
 
         modelBuilder.Entity<Supplier>()
             .Property(s => s.AnnualRevenue)
@@ -330,6 +330,201 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
                 Address = "Calle 50, Panama",
                 CountryId = 5,
                 AnnualRevenue = 2000000.00m
+            },
+            new Supplier
+            {
+                Id = 4,
+                BusinessName = "EDCON KB",
+                CommercialName = "EDCON KB",
+                TaxId = "TAX-SE-482910",
+                PhoneNumber = "+46 8 412 9981",
+                Email = "contact@edconkb.se",
+                Website = "https://edconkb.se",
+                Address = "Sveavägen 44, Stockholm",
+                CountryId = 8,
+                AnnualRevenue = 1250000.50m
+            },
+            new Supplier
+            {
+                Id = 5,
+                BusinessName = "SWEDISH URBAN PLANNER & MANAGEMENT",
+                CommercialName = "SUPM",
+                TaxId = "TAX-SE-771204",
+                PhoneNumber = "+46 70 552 1189",
+                Email = "info@supm.se",
+                Website = "https://supm-group.se",
+                Address = "Kungsgatan 12, Stockholm",
+                CountryId = 8,
+                AnnualRevenue = 980000.00m
+            },
+            new Supplier
+            {
+                Id = 6,
+                BusinessName = "DARESLEY HOLDING INC.",
+                CommercialName = "DARESLEY",
+                TaxId = "TAX-BVI-993120",
+                PhoneNumber = "+1 284 555 0192",
+                Email = "admin@daresleyholdings.vg",
+                Website = "https://daresleyholdings.vg",
+                Address = "Road Town, Tortola",
+                CountryId = 5,
+                AnnualRevenue = 5600000.00m
+            },
+            new Supplier
+            {
+                Id = 7,
+                BusinessName = "HARLTON INVESTMENTS INC.",
+                CommercialName = "HARLTON",
+                TaxId = "TAX-IE-550871",
+                PhoneNumber = "+353 1 902 4411",
+                Email = "contact@harlton.ie",
+                Website = "https://harltoninvest.ie",
+                Address = "Dublin 2, Ireland",
+                CountryId = 6,
+                AnnualRevenue = 3200000.00m
+            },
+            new Supplier
+            {
+                Id = 8,
+                BusinessName = "OVERSEAS PROJECT SERVICES LTD.",
+                CommercialName = "OPS LTD",
+                TaxId = "TAX-UK-110992",
+                PhoneNumber = "+44 20 7946 8821",
+                Email = "ops@overseasprojects.co.uk",
+                Website = "https://ops-global.co.uk",
+                Address = "12 Baker Street, London",
+                CountryId = 3,
+                AnnualRevenue = 7400000.00m
+            },
+            new Supplier
+            {
+                Id = 9,
+                BusinessName = "AGRIC-CANADA",
+                CommercialName = "AGRIC CANADA",
+                TaxId = "TAX-CA-440193",
+                PhoneNumber = "+1 416 555 7712",
+                Email = "support@agriccanada.ca",
+                Website = "https://agriccanada.ca",
+                Address = "Toronto, Ontario",
+                CountryId = 9,
+                AnnualRevenue = 2100000.00m
+            },
+            new Supplier
+            {
+                Id = 10,
+                BusinessName = "WEST END ASSOCIATES LTD.",
+                CommercialName = "WEST END",
+                TaxId = "TAX-IM-908172",
+                PhoneNumber = "+44 1624 667 881",
+                Email = "info@westendassociates.im",
+                Website = "https://westendassociates.im",
+                Address = "Douglas, Isle of Man",
+                CountryId = 3,
+                AnnualRevenue = 430000.00m
+            },
+            new Supplier
+            {
+                Id = 11,
+                BusinessName = "INTER EMIRATES & CO.",
+                CommercialName = "INTER EMIRATES",
+                TaxId = "TAX-AE-772910",
+                PhoneNumber = "+971 4 338 2210",
+                Email = "contact@interemirates.ae",
+                Website = "https://interemirates.ae",
+                Address = "Sheikh Zayed Road, Dubai",
+                CountryId = 10,
+                AnnualRevenue = 9800000.00m
+            },
+            new Supplier
+            {
+                Id = 12,
+                BusinessName = "KARITEX LIMITED",
+                CommercialName = "KARITEX",
+                TaxId = "TAX-NG-660211",
+                PhoneNumber = "+234 1 277 8831",
+                Email = "info@karitex.ng",
+                Website = "https://karitex.ng",
+                Address = "Victoria Island, Lagos",
+                CountryId = 11,
+                AnnualRevenue = 1250000.00m
+            },
+            new Supplier
+            {
+                Id = 13,
+                BusinessName = "COLDLINE INCORPORATED",
+                CommercialName = "COLDLINE",
+                TaxId = "TAX-US-301884",
+                PhoneNumber = "+1 201 555 0198",
+                Email = "support@coldlineinc.com",
+                Website = "https://coldlineinc.com",
+                Address = "Newark, New Jersey, USA",
+                CountryId = 1,
+                AnnualRevenue = 6700000.00m
+            },
+            new Supplier
+            {
+                Id = 14,
+                BusinessName = "INFOTEK & CO.",
+                CommercialName = "INFOTEK",
+                TaxId = "TAX-UK-552901",
+                PhoneNumber = "+44 20 3865 1192",
+                Email = "hello@infotekco.uk",
+                Website = "https://infotekco.uk",
+                Address = "Canary Wharf, London",
+                CountryId = 3,
+                AnnualRevenue = 3100000.00m
+            },
+            new Supplier
+            {
+                Id = 15,
+                BusinessName = "ENGINEERING PROJECTS INTERNATIONAL",
+                CommercialName = "EPI",
+                TaxId = "TAX-UK-774401",
+                PhoneNumber = "+44 20 7123 9088",
+                Email = "projects@epi-global.co.uk",
+                Website = "https://epi-global.co.uk",
+                Address = "Holborn, London",
+                CountryId = 3,
+                AnnualRevenue = 8900000.00m
+            },
+            new Supplier
+            {
+                Id = 16,
+                BusinessName = "TIMES INTERNATIONAL & CO.",
+                CommercialName = "TIMES INTL",
+                TaxId = "TAX-UK-119233",
+                PhoneNumber = "+44 20 7946 5522",
+                Email = "info@timesintl.co.uk",
+                Website = "https://timesintl.co.uk",
+                Address = "Soho, London",
+                CountryId = 3,
+                AnnualRevenue = 2400000.00m
+            },
+            new Supplier
+            {
+                Id = 17,
+                BusinessName = "UNITED BASEL LTD.",
+                CommercialName = "UNITED BASEL",
+                TaxId = "TAX-IM-445900",
+                PhoneNumber = "+44 1624 555 901",
+                Email = "contact@unitedbasel.im",
+                Website = "https://unitedbasel.im",
+                Address = "Douglas, Isle of Man",
+                CountryId = 3,
+                AnnualRevenue = 780000.00m
+            },
+            new Supplier
+            {
+                Id = 18,
+                BusinessName = "PENMACS CORPORATION",
+                CommercialName = "PENMACS",
+                TaxId = "TAX-JP-7788991",
+                PhoneNumber = "+81 45 312 8890",
+                Email = "info@penmacs.co.jp",
+                Website = "https://penmacs.co.jp",
+                Address = "Minato Mirai, Yokohama",
+                CountryId = 12,
+                AnnualRevenue = 15300000.00m
             }
         );
 
