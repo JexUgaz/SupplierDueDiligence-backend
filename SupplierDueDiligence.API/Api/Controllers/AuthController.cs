@@ -24,9 +24,9 @@ public class AuthController(AppDbContext context, IJwtService jwtService) : Cont
     {
         HttpOnly = true,
         Secure = true,
-        SameSite = SameSiteMode.None,
+        SameSite = SameSiteMode.Lax,
         Expires = DateTime.UtcNow.AddMinutes(jwtService.ExpiresInMinutes),
-        // Domain = ".jexugaz.work"
+        Domain = ".jexugaz.work"
     };
 
     [HttpGet]
