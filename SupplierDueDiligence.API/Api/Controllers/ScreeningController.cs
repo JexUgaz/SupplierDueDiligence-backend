@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using SupplierDueDiligence.API.Config;
+using SupplierDueDiligence.API.Config.Settings;
 using SupplierDueDiligence.API.Config.Exceptions;
 using SupplierDueDiligence.API.Config.Helpers;
 using SupplierDueDiligence.API.Data;

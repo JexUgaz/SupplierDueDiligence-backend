@@ -13,20 +13,12 @@ namespace SupplierDueDiligence.API.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AuthController(AppDbContext context, IJwtService jwtService) : ControllerBase
+public class AuthController(AppDbContext context, IJwtService jwtService, IWebHostEnvironment environment) : ControllerBase
 {
     private readonly AppDbContext _context = context;
     private readonly PasswordHasher<User> _hasher = new();
     private readonly IJwtService _jwtService = jwtService;
-
-    private readonly CookieOptions _cookieOptions = new()
-    {
-        HttpOnly = true,
-        Secure = true,
-        SameSite = SameSiteMode.Lax,
-        Expires = DateTime.UtcNow.AddMinutes(jwtService.ExpiresInMinutes),
-        Domain = ".jexugaz.work"
-    };
+    private readonly IWebHostEnvironment _environment = environment;
 
     [HttpGet]
     [Authorize]
@@ -54,7 +46,7 @@ public class AuthController(AppDbContext context, IJwtService jwtService) : Cont
 
         var token = _jwtService.GenerateToken(user);
 
-        Response.Cookies.Append(_jwtService.CookieKey, token, _cookieOptions);
+        Response.Cookies.Append(_jwtService.CookieKey, token, GetCookieOptions());
 
         UserDto auth = new()
         {
@@ -69,7 +61,7 @@ public class AuthController(AppDbContext context, IJwtService jwtService) : Cont
     [HttpPost("logout")]
     public IActionResult Logout()
     {
-        Response.Cookies.Append(_jwtService.CookieKey, "", _cookieOptions);
+        Response.Cookies.Append(_jwtService.CookieKey, "", GetCookieOptions());
         return Ok(ApiResponse<bool>.Success("Logout successful", true));
     }
 
@@ -92,5 +84,29 @@ public class AuthController(AppDbContext context, IJwtService jwtService) : Cont
         _context.SaveChanges();
 
         return Ok(ApiResponse<bool>.Success("User was created successfully", true));
+    }
+
+
+    private CookieOptions GetCookieOptions()
+    {
+        if (_environment.IsDevelopment())
+        {
+            return new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.None,
+                Expires = DateTime.UtcNow.AddMinutes(_jwtService.ExpiresInMinutes),
+            };
+        }
+
+        return new CookieOptions
+        {
+            HttpOnly = true,
+            Secure = true,
+            SameSite = SameSiteMode.Lax,
+            Expires = DateTime.UtcNow.AddMinutes(_jwtService.ExpiresInMinutes),
+            Domain = ".jexugaz.work"
+        };
     }
 }

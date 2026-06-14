@@ -3,7 +3,6 @@ using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SupplierDueDiligence.API.Api.Middlewares;
-using SupplierDueDiligence.API.Config;
 using SupplierDueDiligence.API.Config.Helpers;
 using SupplierDueDiligence.API.Config.Settings;
 using SupplierDueDiligence.API.Data;

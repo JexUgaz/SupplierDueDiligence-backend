@@ -1,4 +1,4 @@
-namespace SupplierDueDiligence.API.Config;
+namespace SupplierDueDiligence.API.Config.Settings;
 
 public class InternalSettings
 {
