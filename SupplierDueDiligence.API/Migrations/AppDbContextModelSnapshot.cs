@@ -1901,6 +1901,14 @@ namespace SupplierDueDiligence.API.Migrations
                     b.HasData(
                         new
                         {
+                            Id = new Guid("b7e2d8f1-6c43-4a9d-8f25-1e7c3b9d4a62"),
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "jexugaz@gmail.com",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDp/4H+Kjq1ACdh9eCZjyyYygv8m/B3eda57MnlxB/oeSGoMZWZ+GTG8h4zcUYWQNg==",
+                            Username = "jexugaz"
+                        },
+                        new
+                        {
                             Id = new Guid("c2e88754-02e8-4ce2-962a-9c56501118b0"),
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "maria.garcia@example.com",

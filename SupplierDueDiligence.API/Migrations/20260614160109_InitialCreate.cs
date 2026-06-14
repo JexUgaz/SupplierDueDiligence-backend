@@ -348,6 +348,7 @@ namespace SupplierDueDiligence.API.Migrations
                 columns: new[] { "id", "email", "password_hash", "username" },
                 values: new object[,]
                 {
+                    { new Guid("b7e2d8f1-6c43-4a9d-8f25-1e7c3b9d4a62"), "jexugaz@gmail.com", "AQAAAAIAAYagAAAAEDp/4H+Kjq1ACdh9eCZjyyYygv8m/B3eda57MnlxB/oeSGoMZWZ+GTG8h4zcUYWQNg==", "jexugaz" },
                     { new Guid("c2e88754-02e8-4ce2-962a-9c56501118b0"), "maria.garcia@example.com", "AQAAAAIAAYagAAAAEDJ5VZasQzvI+Z54io94cso6jboPFIeTHCKoqVxCfXOvDscFygcrO6dRibNSxss/og==", "maria.garcia" },
                     { new Guid("cfaa81f3-80a1-4e52-bca6-096b2bd8104d"), "carlos.ramirez@example.com", "AQAAAAIAAYagAAAAEKJkf4qEzYgZiKR9N2QWt3GK2S8KGI2UZrydbO696D+WdyOd0HjCB4uoYdyhvejgeQ==", "carlos_ramirez" }
                 });

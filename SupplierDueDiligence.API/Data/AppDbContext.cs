@@ -537,6 +537,13 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         modelBuilder.Entity<User>().HasData(
             new User
             {
+                Id = Guid.Parse("B7E2D8F1-6C43-4A9D-8F25-1E7C3B9D4A62"),
+                Username = "jexugaz",
+                Email = "jexugaz@gmail.com",
+                PasswordHash = "AQAAAAIAAYagAAAAEDp/4H+Kjq1ACdh9eCZjyyYygv8m/B3eda57MnlxB/oeSGoMZWZ+GTG8h4zcUYWQNg==" // Jex*2026
+            },
+            new User
+            {
                 Id = Guid.Parse("C2E88754-02E8-4CE2-962A-9C56501118B0"),
                 Username = "maria.garcia",
                 Email = "maria.garcia@example.com",
