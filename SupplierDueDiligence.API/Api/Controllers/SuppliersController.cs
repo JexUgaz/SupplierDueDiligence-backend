@@ -27,7 +27,7 @@ public class SupplierController(AppDbContext context) : ControllerBase
         if (!string.IsNullOrWhiteSpace(query.BusinessName))
         {
             suppliersQuery = suppliersQuery
-                .Where(s => s.BusinessName.Contains(query.BusinessName, StringComparison.CurrentCultureIgnoreCase));
+                .Where(s => s.BusinessName.ToLower().Contains(query.BusinessName.ToLower()));
         }
 
         if (query.CountryId.HasValue)
