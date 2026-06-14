@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SupplierDueDiligence.API.Config.Exceptions;
-using SupplierDueDiligence.API.Config.Settings;
 using SupplierDueDiligence.API.Data;
 using SupplierDueDiligence.API.Domain.Models;
 using SupplierDueDiligence.API.Domain.Services;
@@ -24,9 +23,8 @@ public class AuthController(AppDbContext context, IJwtService jwtService) : Cont
     private readonly CookieOptions _cookieOptions = new()
     {
         HttpOnly = true,
-        // Secure = true,
-        // SameSite = SameSiteMode.None,
-        SameSite = SameSiteMode.Lax,
+        Secure = true,
+        SameSite = SameSiteMode.None,
         Expires = DateTime.UtcNow.AddMinutes(jwtService.ExpiresInMinutes),
         // Domain = ".jexugaz.work"
     };

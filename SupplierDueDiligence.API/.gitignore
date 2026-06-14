@@ -57,3 +57,4 @@ appsettings.Development.json
 appsettings.Production.json
 appsettings.Local.json
 .env
+.env.production
