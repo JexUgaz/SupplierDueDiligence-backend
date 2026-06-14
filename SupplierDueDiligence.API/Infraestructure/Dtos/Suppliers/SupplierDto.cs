@@ -16,8 +16,8 @@ public class SupplierDto
     public string? CommercialName { get; set; }
 
     [Required(ErrorMessage = "TaxId is required.")]
-    [StringLength(11, MinimumLength = 11, ErrorMessage = "TaxId must be exactly 11 digits.")]
-    [RegularExpression(@"^\d{11}$", ErrorMessage = "TaxId must contain exactly 11 digits.")]
+    [StringLength(30, MinimumLength = 1, ErrorMessage = "TaxId must contain between 1 and 30 digits.")]
+    [RegularExpression(@"^\d+$", ErrorMessage = "TaxId must contain only digits.")]
     public required string TaxId { get; set; } = null!;
 
     [Phone(ErrorMessage = "Invalid phone number.")]
