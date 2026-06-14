@@ -85,6 +85,7 @@ public class AuthController(AppDbContext context, IJwtService jwtService) : Cont
 
         var user = new User
         {
+            Id = Guid.NewGuid(),
             Username = dto.Username,
             Email = dto.Email,
         };

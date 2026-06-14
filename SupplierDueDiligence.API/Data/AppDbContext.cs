@@ -18,10 +18,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
         modelBuilder.Entity<User>()
             .Property(s => s.CreatedAt)
-            .HasDefaultValueSql("GETDATE()");
-        modelBuilder.Entity<User>()
-            .Property(u => u.Id)
-            .HasDefaultValueSql("NEWID()");
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
         modelBuilder.Entity<ScreeningSource>()
             .Property(e => e.Code)
@@ -29,9 +26,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
         modelBuilder.Entity<Country>()
               .Property(s => s.Iso)
-              .HasColumnType("char(2)")
-              .IsFixedLength()
-              .IsRequired(true);
+                .HasColumnType("char(2)")
+                .IsRequired();
 
         modelBuilder.Entity<Supplier>()
             .HasIndex(s => s.TaxId)
@@ -42,7 +38,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
         modelBuilder.Entity<Supplier>()
             .Property(s => s.LastUpdated)
-            .HasDefaultValueSql("GETDATE()");
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
         modelBuilder.Entity<Supplier>()
             .Property(s => s.TaxId)

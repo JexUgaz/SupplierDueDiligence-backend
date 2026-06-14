@@ -16,9 +16,7 @@ using SupplierDueDiligence.API.Infraestructure.Services;
 var builder = WebApplication.CreateBuilder(args);
 var allowFrontCorsPolicy = "AllowFrontCorsPolicy";
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")).UseSnakeCaseNamingConvention());
 
 var allowedOrigins = builder.Configuration.GetSection("Settings:Cors:AllowedOrigins").Get<string[]>()!;
 

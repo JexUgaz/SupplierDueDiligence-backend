@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -8,56 +9,86 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SupplierDueDiligence.API.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Initial_Postgres : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Countries",
+                name: "countries",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Iso = table.Column<string>(type: "char(2)", fixedLength: true, nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    iso = table.Column<string>(type: "char(2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Countries", x => x.Id);
+                    table.PrimaryKey("pk_countries", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Suppliers",
+                name: "screening_sources",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BusinessName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CommercialName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TaxId = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Website = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CountryId = table.Column<int>(type: "int", nullable: false),
-                    AnnualRevenue = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()")
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    enable = table.Column<bool>(type: "boolean", nullable: false),
+                    code = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Suppliers", x => x.Id);
+                    table.PrimaryKey("pk_screening_sources", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "users",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    username = table.Column<string>(type: "text", nullable: false),
+                    email = table.Column<string>(type: "text", nullable: false),
+                    password_hash = table.Column<string>(type: "text", nullable: false),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_users", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "suppliers",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    business_name = table.Column<string>(type: "text", nullable: false),
+                    commercial_name = table.Column<string>(type: "text", nullable: true),
+                    tax_id = table.Column<string>(type: "character varying(11)", maxLength: 11, nullable: false),
+                    phone_number = table.Column<string>(type: "text", nullable: true),
+                    email = table.Column<string>(type: "text", nullable: true),
+                    website = table.Column<string>(type: "text", nullable: true),
+                    address = table.Column<string>(type: "text", nullable: true),
+                    country_id = table.Column<int>(type: "integer", nullable: false),
+                    annual_revenue = table.Column<decimal>(type: "numeric(18,2)", nullable: true),
+                    last_updated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_suppliers", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Suppliers_Countries_CountryId",
-                        column: x => x.CountryId,
-                        principalTable: "Countries",
-                        principalColumn: "Id",
+                        name: "fk_suppliers_countries_country_id",
+                        column: x => x.country_id,
+                        principalTable: "countries",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
-                table: "Countries",
-                columns: new[] { "Id", "Iso", "Name" },
+                table: "countries",
+                columns: new[] { "id", "iso", "name" },
                 values: new object[,]
                 {
                     { 1, "AF", "Afganistán" },
@@ -303,8 +334,27 @@ namespace SupplierDueDiligence.API.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Suppliers",
-                columns: new[] { "Id", "Address", "AnnualRevenue", "BusinessName", "CommercialName", "CountryId", "Email", "PhoneNumber", "TaxId", "Website" },
+                table: "screening_sources",
+                columns: new[] { "id", "code", "enable", "name" },
+                values: new object[,]
+                {
+                    { 1, "OFAC", true, "OFAC" },
+                    { 2, "WORLD_BANK", true, "World Bank" },
+                    { 3, "OFFSHORE_LEAKS", false, "Offshore Leaks" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "users",
+                columns: new[] { "id", "email", "password_hash", "username" },
+                values: new object[,]
+                {
+                    { new Guid("c2e88754-02e8-4ce2-962a-9c56501118b0"), "maria.garcia@example.com", "AQAAAAIAAYagAAAAEDJ5VZasQzvI+Z54io94cso6jboPFIeTHCKoqVxCfXOvDscFygcrO6dRibNSxss/og==", "maria.garcia" },
+                    { new Guid("cfaa81f3-80a1-4e52-bca6-096b2bd8104d"), "carlos.ramirez@example.com", "AQAAAAIAAYagAAAAEKJkf4qEzYgZiKR9N2QWt3GK2S8KGI2UZrydbO696D+WdyOd0HjCB4uoYdyhvejgeQ==", "carlos_ramirez" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "suppliers",
+                columns: new[] { "id", "address", "annual_revenue", "business_name", "commercial_name", "country_id", "email", "phone_number", "tax_id", "website" },
                 values: new object[,]
                 {
                     { 1, "Av. Reforma 123", 500000.00m, "Tech Solutions SA", "TechSol", 2, "contact@techsol.com", "+525512345678", "12345678901", "https://techsol.com" },
@@ -313,19 +363,19 @@ namespace SupplierDueDiligence.API.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Suppliers_CountryId",
-                table: "Suppliers",
-                column: "CountryId");
+                name: "ix_suppliers_country_id",
+                table: "suppliers",
+                column: "country_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Suppliers_LastUpdated",
-                table: "Suppliers",
-                column: "LastUpdated");
+                name: "ix_suppliers_last_updated",
+                table: "suppliers",
+                column: "last_updated");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Suppliers_TaxId",
-                table: "Suppliers",
-                column: "TaxId",
+                name: "ix_suppliers_tax_id",
+                table: "suppliers",
+                column: "tax_id",
                 unique: true);
         }
 
@@ -333,10 +383,16 @@ namespace SupplierDueDiligence.API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Suppliers");
+                name: "screening_sources");
 
             migrationBuilder.DropTable(
-                name: "Countries");
+                name: "suppliers");
+
+            migrationBuilder.DropTable(
+                name: "users");
+
+            migrationBuilder.DropTable(
+                name: "countries");
         }
     }
 }

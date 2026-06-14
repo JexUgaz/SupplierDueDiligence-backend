@@ -9,7 +9,7 @@
     "AllowedOrigins": ["http://localhost:5173"]
   },
   "ConnectionStrings": {
-    "DefaultConnection": ""
+    "DefaultConnection": "Server=localhost\\SQLEXPRESS;Database=SupplierDueDiligence;Trusted_Connection=True;TrustServerCertificate=True"
   },
   "Settings": {
     "Internal": {
