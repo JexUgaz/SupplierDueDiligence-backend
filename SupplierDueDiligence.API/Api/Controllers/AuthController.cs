@@ -21,6 +21,16 @@ public class AuthController(AppDbContext context, IJwtService jwtService) : Cont
     private readonly PasswordHasher<User> _hasher = new();
     private readonly IJwtService _jwtService = jwtService;
 
+    private readonly CookieOptions _cookieOptions = new()
+    {
+        HttpOnly = true,
+        // Secure = true,
+        // SameSite = SameSiteMode.None,
+        SameSite = SameSiteMode.Lax,
+        Expires = DateTime.UtcNow.AddMinutes(jwtService.ExpiresInMinutes),
+        // Domain = ".jexugaz.work"
+    };
+
     [HttpGet]
     [Authorize]
     public IActionResult Me()
@@ -47,16 +57,7 @@ public class AuthController(AppDbContext context, IJwtService jwtService) : Cont
 
         var token = _jwtService.GenerateToken(user);
 
-        var cookieOptions = new CookieOptions
-        {
-            HttpOnly = true,
-            Secure = true,
-            SameSite = SameSiteMode.None,
-            Expires = DateTime.UtcNow.AddMinutes(_jwtService.ExpiresInMinutes),
-            Domain = ".jexugaz.work"
-        };
-
-        Response.Cookies.Append(_jwtService.CookieKey, token, cookieOptions);
+        Response.Cookies.Append(_jwtService.CookieKey, token, _cookieOptions);
 
         UserDto auth = new()
         {
@@ -66,6 +67,13 @@ public class AuthController(AppDbContext context, IJwtService jwtService) : Cont
 
 
         return Ok(ApiResponse<UserDto>.Success("Login successful", auth));
+    }
+
+    [HttpPost("logout")]
+    public IActionResult Logout()
+    {
+        Response.Cookies.Append(_jwtService.CookieKey, "", _cookieOptions);
+        return Ok(ApiResponse<bool>.Success("Logout successful", true));
     }
 
 

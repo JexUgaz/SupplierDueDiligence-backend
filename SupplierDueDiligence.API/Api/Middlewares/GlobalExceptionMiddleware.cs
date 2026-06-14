@@ -9,6 +9,11 @@ public class GlobalExceptionMiddleware(RequestDelegate next, ILogger<GlobalExcep
 {
     private readonly RequestDelegate _next = next;
     private readonly ILogger<GlobalExceptionMiddleware> _logger = logger;
+    private static readonly JsonSerializerOptions _options = new()
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        Converters = { new JsonStringEnumConverter() }
+    };
 
     public async Task InvokeAsync(HttpContext context)
     {
@@ -35,12 +40,8 @@ public class GlobalExceptionMiddleware(RequestDelegate next, ILogger<GlobalExcep
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = response.Error!.Code;
 
-        var options = new JsonSerializerOptions
-        {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            Converters = { new JsonStringEnumConverter() }
-        };
-        var json = JsonSerializer.Serialize(response, options);
+
+        var json = JsonSerializer.Serialize(response, _options);
         return context.Response.WriteAsync(json);
     }
 }

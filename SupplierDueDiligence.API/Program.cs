@@ -96,7 +96,7 @@ using (var scope = app.Services.CreateScope())
 
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.UseCors(allowFrontCorsPolicy);
 
