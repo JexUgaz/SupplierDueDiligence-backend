@@ -11,4 +11,5 @@ public enum ErrorType
     NOT_FOUND,
     INTERNAL_SERVER,
     UNKNOWN_ERROR,
+    SERVICE_UNAVAILABLE,
 }

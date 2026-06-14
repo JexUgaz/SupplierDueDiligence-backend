@@ -56,6 +56,13 @@ public class ScreeningController(
 
         string content = await response.Content.ReadAsStringAsync();
 
+        if (!response.IsSuccessStatusCode)
+        {
+            var status = (int)response.StatusCode;
+
+            if (status == 502) throw new ScraperUnavailableException();
+        }
+
         var data = _deserializer.DeserializeAsync<ApiResponse<ScrappingResponse>>(content) ?? throw new InternalServerException(
                     details: "Deserialization returned null or malformed JSON.",
                     message: "Something unexpected happened while retrieving data from the selected sources."
